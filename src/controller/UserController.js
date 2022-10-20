@@ -38,5 +38,13 @@ module.exports = {
             return res.json({ error })
         }
 
-    }
+    },
+    async delete(req, res) {
+
+        const { id } = req.params
+
+        await prisma.user.delete({ where: { id: Number(id) } })
+
+        res.json({ sucess: "deletado com sucesso" })
+    },
 }
