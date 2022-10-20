@@ -7,6 +7,13 @@ module.exports = {
 
         res.json(user)
     },
+    async showById(req, res) {
+
+        const { id } = req.params
+        const user = await prisma.user.findUnique({ where: { id: Number(id) } })
+
+        res.json(user)
+    },
     async create(req, res) {
         try {
 
